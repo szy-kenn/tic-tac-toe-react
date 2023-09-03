@@ -23,16 +23,15 @@ const Board = () => {
             if (countItem("", squareValues) < 5) {
                 setWinner(checkWinner());
             }
-
             switchPlayer();
         }
     }, [currentKey]);
 
     useEffect(() => {
-        if (winner) {
-            console.log("Game Over! Winner: ", winner);
+        if (countItem("", squareValues) === 0 && !winner) {
+            setWinner("Tie");
         }
-    }, [winner]);
+    }, [squareValues]);
 
     const checkWinner = (): string => {
         const lines = [
@@ -49,6 +48,7 @@ const Board = () => {
         for (let i = 0; i < lines.length; i++) {
             const [a, b, c] = lines[i];
             if (
+                squareValues[a] &&
                 squareValues[a] === squareValues[b] &&
                 squareValues[b] === squareValues[c]
             ) {
@@ -109,7 +109,11 @@ const Board = () => {
             <div className="board">{createSquareRows(size, size)}</div>
             <div className="game-info">
                 <p>
-                    {winner ? `Winner: ${winner}` : `Player to move: ${player}`}
+                    {winner
+                        ? winner === "Tie"
+                            ? "Result: Tie"
+                            : `Winner: ${winner}`
+                        : `Player to move: ${player}`}
                 </p>
             </div>
         </>
