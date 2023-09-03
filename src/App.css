@@ -1,0 +1,14 @@
+@import url(https://meyerweb.com/eric/tools/css/reset/reset.css);
+
+.wrapper {
+    height: 100dvh;
+    width: 100dvw;
+}
+
+.board-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+}
+
