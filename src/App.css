@@ -1,8 +1,9 @@
-@import url(https://meyerweb.com/eric/tools/css/reset/reset.css);
-
-.wrapper {
-    height: 100dvh;
-    width: 100dvw;
+.board {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    gap: 0.25rem;
 }
 
 .board-row {
@@ -12,3 +13,27 @@
     gap: 0.25rem;
 }
 
+.square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    border: 2px solid rgb(70, 68, 68);
+    aspect-ratio: 1;
+    width: 5rem;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.1s;
+    border-radius: 5px;
+}
+
+.square > p {
+    font-size: clamp(1.2em, 2vw, 2vw);
+}
+
+.square:hover {
+    border: 2px solid rgb(110, 18, 196);
+    background-color: rgba(110, 18, 196, 0.1);
+    font-weight: bold;
+}
