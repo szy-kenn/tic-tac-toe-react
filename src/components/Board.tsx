@@ -27,12 +27,6 @@ const Board = () => {
         }
     }, [currentKey]);
 
-    useEffect(() => {
-        if (countItem("", squareValues) === 0 && !winner) {
-            setWinner("Tie");
-        }
-    }, [squareValues]);
-
     const checkWinner = (): string => {
         const lines = [
             [0, 1, 2],
@@ -54,6 +48,10 @@ const Board = () => {
             ) {
                 return squareValues[a];
             }
+        }
+
+        if (countItem("", squareValues) === 0) {
+            return "Tie";
         }
 
         return "";
