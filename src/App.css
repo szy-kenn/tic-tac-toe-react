@@ -5,6 +5,14 @@
     padding: 1rem;
 }
 
+.game-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
 .board {
     display: flex;
     flex-direction: column;
