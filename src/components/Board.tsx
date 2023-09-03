@@ -1,10 +1,15 @@
 import Square from "./Square";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Board = () => {
     const size = 3;
     const [player, setPlayer] = useState("X");
     const [squareValues, setSquareValues] = useState(new Array(9).fill(""));
+    const [history, setHistory] = useState([new Array(9).fill("")]);
+
+    useEffect(() => {
+        console.log(history);
+    }, [history]);
 
     const switchPlayer = () => {
         player === "X" ? setPlayer("O") : setPlayer("X");
@@ -12,9 +17,16 @@ const Board = () => {
 
     const handleSquareClick = (key: number) => {
         let newSquares = squareValues.slice();
-        newSquares[key] = player;
-        switchPlayer();
-        setSquareValues(newSquares);
+
+        if (!newSquares[key]) {
+            newSquares[key] = player;
+            switchPlayer();
+            setSquareValues(newSquares);
+
+            let newState = history.slice();
+            newState.push(newSquares);
+            setHistory(newState);
+        }
     };
 
     // create squares in a row
